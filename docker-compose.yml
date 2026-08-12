@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: pokedex_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: pokedex_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pokedex_db_data:/var/lib/postgresql/data
+    networks:
+      - pokedex_network
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    container_name: pokedex_backend
+    volumes:
+      - ./backend:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=pokedex_db
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=secret
+    depends_on:
+      - db
+    networks:
+      - pokedex_network
+    working_dir: /var/www/html
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+    container_name: pokedex_frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api/v1
+    networks:
+      - pokedex_network
+    working_dir: /app
+
+volumes:
+  pokedex_db_data:
+
+networks:
+  pokedex_network:
+    driver: bridge
