@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Premium Font from Google */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Pokemon Type Colors / Gradients */
+.bg-type-normal { background-color: #A8A77A; }
+.bg-type-fire { background-color: #EE8130; }
+.bg-type-water { background-color: #6390F0; }
+.bg-type-electric { background-color: #F7D02C; }
+.bg-type-grass { background-color: #7AC74C; }
+.bg-type-ice { background-color: #96D9D6; }
+.bg-type-fighting { background-color: #C22E28; }
+.bg-type-poison { background-color: #A33EA1; }
+.bg-type-ground { background-color: #E2BF65; }
+.bg-type-flying { background-color: #A98FF3; }
+.bg-type-psychic { background-color: #F95587; }
+.bg-type-bug { background-color: #A6B91A; }
+.bg-type-rock { background-color: #B6A136; }
+.bg-type-ghost { background-color: #705746; }
+.bg-type-dragon { background-color: #6F35FC; }
+.bg-type-dark { background-color: #705746; }
+.bg-type-steel { background-color: #B7B7CE; }
+.bg-type-fairy { background-color: #D685AD; }
+
+/* Custom Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}

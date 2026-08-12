@@ -3,8 +3,13 @@ FROM node:20-alpine
 # Configurar directorio de trabajo
 WORKDIR /app
 
+# Copiar package.json y package-lock.json
+COPY frontend/package*.json ./
+
+# Instalar dependencias para Linux
+RUN npm install
+
 # Exponer puerto de vite
 EXPOSE 5173
 
-# El comando se ejecutará asumiendo que package.json y node_modules existen (gracias al volumen)
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD npm run dev -- --host 0.0.0.0 --port ${PORT:-5173}

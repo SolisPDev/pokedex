@@ -44,6 +44,7 @@ services:
     container_name: pokedex_frontend
     volumes:
       - ./frontend:/app
+      - /app/node_modules
     ports:
       - "5173:5173"
     environment:

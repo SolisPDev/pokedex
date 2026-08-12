@@ -16,7 +16,9 @@
 - **Bonus 2: Chat Contextual de Colección:**
   - Un asistente inteligente en la UI que analiza la colección guardada del usuario y le da insights (ej. *"Tienes muchos Pokémon tipo Fuego, te sugiero buscar uno tipo Agua"*).
 
-## 3. Criterios de Calidad
-- Ejecución local desacoplada vía **Docker Compose** (`:8000` Backend, `:5173` Frontend, `:5432` Postgres).
-- Caché en backend para las peticiones a la PokéAPI y evitar latencia excesiva.
-- Manejo estandarizado de excepciones (401, 404, 422, 500).
+## 3. Criterios de Calidad e Infraestructura
+- **Ejecución Local:** Desacoplada vía **Docker Compose** (`:8000` Backend, `:5173` Frontend, `:5432` Postgres) con aislamiento de `node_modules` para consistencia cross-platform.
+- **Caché en Backend:** Almacenamiento en caché para las peticiones a la PokéAPI para optimizar la velocidad.
+- **Manejo de Errores:** Manejo estandarizado de excepciones (401, 404, 422, 500) en respuestas JSON.
+- **Infraestructura de Producción (Cloud):** Despliegue en producción en la plataforma **Railway** con una base de datos administrada PostgreSQL.
+- **Pipeline de Integración y Despliegue Continuo (CI/CD):** Vinculación directa con un repositorio de **GitHub** para compilar y desplegar automáticamente la aplicación en cada actualización en la rama principal (`main`).
