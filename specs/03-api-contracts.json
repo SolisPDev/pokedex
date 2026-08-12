@@ -1,0 +1,160 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "PokéDex Manager API",
+        "version": "1.0.0",
+        "description": "Contrato OpenAPI para el examen PokéDex Manager"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1"
+        }
+    ],
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "summary": "Registro de usuario",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario registrado exitosamente con Token Sanctum"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "summary": "Inicio de sesión",
+                "responses": {
+                    "200": {
+                        "description": "Retorna Bearer Token"
+                    }
+                }
+            }
+        },
+        "/pokemon": {
+            "get": {
+                "summary": "Listar Pokémon desde PokéAPI (Proxy con Caché)",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de Pokémon devuelta"
+                    }
+                }
+            }
+        },
+        "/collection": {
+            "get": {
+                "summary": "Obtener la colección del usuario autenticado",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colección personal"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Agregar Pokémon a la colección con nota",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "pokemon_id": {
+                                        "type": "integer"
+                                    },
+                                    "pokemon_name": {
+                                        "type": "string"
+                                    },
+                                    "custom_notes": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Guardado en la colección"
+                    }
+                }
+            }
+        },
+        "/ia/identify-pokemon": {
+            "post": {
+                "summary": "Bonus IA: Identificar Pokémon desde imagen con Gemini Vision",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna el nombre del Pokémon identificado, confianza y sugerencia"
+                    }
+                }
+            }
+        }
+    }
+}
