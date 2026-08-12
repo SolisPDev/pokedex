@@ -14,6 +14,12 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Configurar directorio de trabajo
 WORKDIR /var/www/html
 
+# Copiar el código del backend al contenedor
+COPY backend/ /var/www/html
+
+# Instalar dependencias de composer
+RUN composer install --no-interaction --optimize-autoloader
+
 # Exponer puerto para artisan serve
 EXPOSE 8000
 
