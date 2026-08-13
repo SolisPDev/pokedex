@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\GeminiService;
+use App\Services\AiManagerService;
 use Illuminate\Http\Request;
 
 class IaController extends Controller
 {
-    protected GeminiService $geminiService;
+    protected AiManagerService $aiService;
 
-    public function __construct(GeminiService $geminiService)
+    public function __construct(AiManagerService $aiService)
     {
-        $this->geminiService = $geminiService;
+        $this->aiService = $aiService;
     }
 
     /**
@@ -35,7 +35,7 @@ class IaController extends Controller
             $base64Image = $request->image;
         }
 
-        $result = $this->geminiService->identifyPokemon($base64Image, $mimeType);
+        $result = $this->aiService->identifyPokemon($base64Image, $mimeType);
 
         return response()->json($result);
     }
@@ -46,10 +46,11 @@ class IaController extends Controller
     public function insights(Request $request)
     {
         $collection = $request->user()->pokemonCollections()->get()->toArray();
-        $insights = $this->geminiService->getCollectionInsights($collection);
+        $insights = $this->aiService->getCollectionInsights($collection);
 
         return response()->json([
             'insights' => $insights
         ]);
     }
 }
+

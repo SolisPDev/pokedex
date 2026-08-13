@@ -1,9 +1,9 @@
 # 🏛️ Especificación de Arquitectura e Infraestructura Local
 
-## 1. Entorno de Ejecución (Docker Compose)
-- **Base de Datos:** PostgreSQL 15 en puerto `5432` (`pokedex_db`).
-- **Backend API:** Laravel 11 corriendo bajo PHP 8.2 en puerto `8000` (`http://localhost:8000/api`).
-- **Frontend SPA:** Vue 3 + Vite + Tailwind CSS en puerto `5173` (`http://localhost:5173`).
+## 1. Entorno de Ejecución (Local / Nativo)
+- **Base de Datos:** SQLite (`backend/database/database.sqlite`).
+- **Backend API:** Laravel 11 ejecutado localmente (ej: `php artisan serve`) en puerto `8000` (`http://localhost:8000/api`).
+- **Frontend SPA:** Vue 3 + Vite + Tailwind CSS ejecutado localmente (ej: `npm run dev`) en puerto `5173` (`http://localhost:5173`).
 
 ## 2. Diagrama de Relación de Datos (ERD)
 - **`users`**: `id`, `name`, `email`, `password`, `created_at`, `updated_at`.
@@ -19,19 +19,25 @@
 ## 3. Variables de Entorno Requeridas (`.env.example`)
 ```env
 # Backend / Database
-DB_CONNECTION=pgsql
-DB_HOST=db
-DB_PORT=5432
-DB_DATABASE=pokedex_db
-DB_USERNAME=postgres
-DB_PASSWORD=secret
+DB_CONNECTION=sqlite
 
 # Integración PokéAPI
-POKEAPI_BASE_URL=[https://pokeapi.co/api/v2](https://pokeapi.co/api/v2)
+POKEAPI_BASE_URL=https://pokeapi.co/api/v2
 
-# Bonus de IA (Gemini API)
-GEMINI_API_KEY=tu_api_key_aqui
+# Bonus de IA (OpenAI API & Gemini API)
+# Se utiliza tanto para el análisis de imágenes (GPT-4o-mini con Visión) como para la moderación de textos (Moderation API o GPT-4o-mini).
+OPENAI_API_KEY=tu_api_key_aqui
+GEMINI_API_KEY=tu_api_key_de_gemini_aqui
 ```
+
+## 3.1. Flujo de Moderación de Textos y Contingencia (Fallback)
+Cuando un usuario envíe texto para guardar en la base de datos (e.g. notas de favoritos) o al interactuar con el chat:
+1. El backend (Laravel 11) interceptará la petición antes de persistirla o procesarla.
+2. Realizará una llamada a la API de OpenAI (`POST https://api.openai.com/v1/moderations` para moderación, o `/chat/completions` para insights).
+3. **Mecanismo de Fallback:** Si la API de OpenAI responde con error de cuota excedida (e.g. 429 `insufficient_quota`), fallo de red o error de servidor, el backend atrapará la excepción e intentará inmediatamente la misma operación usando la API de Google Gemini (utilizando la clave `GEMINI_API_KEY`).
+4. **Identidad Neutral y Mensajes Genéricos:** Toda respuesta devuelta por el backend al cliente (frontend) debe ser neutral. No debe mencionar si el servicio fue proveído por OpenAI o por Gemini (ej: en lugar de *"Error de OpenAI"*, devolver *"El servicio de revisión de textos no está disponible"* o *"La nota contiene lenguaje inapropiado"*).
+5. Si no pasa la moderación por cualquiera de los dos proveedores de IA, el backend detendrá el flujo y responderá con una estructura de validación HTTP 422 standard.
+6. Si el texto es aprobado por el motor activo, se procede con la operación (guardado en base de datos o llamada al chatbot).
 
 ---
 
@@ -69,7 +75,8 @@ Estas variables se inyectan en Railway para vincular el servidor con la base de 
 | `DB_USERNAME` | `${{Postgres.PGUSER}}` | Nombre de usuario de Postgres |
 | `DB_PASSWORD` | `${{Postgres.PGPASSWORD}}` | Contraseña del usuario de Postgres |
 | `POKEAPI_BASE_URL` | `https://pokeapi.co/api/v2` | URL base de la PokéAPI |
-| `GEMINI_API_KEY` | *(Clave API real generada en Google AI Studio)* | Habilita el reconocimiento por visión e insights de la IA |
+| `OPENAI_API_KEY` | *(Clave API real generada en la plataforma de OpenAI)* | Clave de API de OpenAI para visión e insights |
+| `GEMINI_API_KEY` | *(Clave API real generada en la consola de Google AI Studio)* | Clave de API de Gemini como fallback de visión e insights |
 
 #### Servicio: `frontend` (Vue 3 SPA)
 Este servicio se compila de manera estática y requiere la URL pública del backend para comunicarse:

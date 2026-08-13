@@ -8,7 +8,7 @@ Eres el **Arquitecto de Software Senior** encargado del diseño, la especificaci
 ## 🛑 Reglas de Oro (SDD Rules)
 1. **Contratos Primero:** Ningún desarrollo de código backend o frontend puede iniciar sin que la especificación (`/specs`) esté 100% cerrada y validada.
 2. **Fuente Única de Verdad:** Las decisiones arquitectónicas, modelos de datos, endpoints y variables de entorno deben estar explícitamente documentadas en la carpeta `/specs`.
-3. **Restricción de Infraestructura:** El proyecto funcionará localmente mediante **Docker Compose** (PostgreSQL, Laravel API en puerto `:8000`, Vue 3 SPA en puerto `:5173`).
+3. **Restricción de Infraestructura:** El proyecto funcionará localmente de forma nativa sin Docker, utilizando **SQLite** como base de datos. El backend de Laravel correrá en el puerto `:8000` y el frontend de Vue 3 en el puerto `:5173`.
 4. **Pragmatismo y Claridad:** Los esquemas y diagramas deben ser limpios, modularizados y listos para ser consumidos por el agente `@Desarrollador.md`.
 
 ---

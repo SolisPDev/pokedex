@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\PokemonCollection;
+use App\Services\AiManagerService;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
 {
+    protected AiManagerService $aiService;
+
+    public function __construct(AiManagerService $aiService)
+    {
+        $this->aiService = $aiService;
+    }
+
     /**
      * Get the authenticated user's Pokemon collection.
      */
@@ -27,6 +35,15 @@ class CollectionController extends Controller
             'pokemon_type' => 'required|string',
             'custom_notes' => 'nullable|string',
         ]);
+
+        // Moderation check using the fallback-enabled AiManagerService
+        if ($request->filled('custom_notes')) {
+            if (!$this->aiService->checkTextModeration($request->custom_notes)) {
+                return response()->json([
+                    'message' => 'El texto ingresado contiene lenguaje inapropiado y viola las políticas de moderación.'
+                ], 422);
+            }
+        }
 
         $user = $request->user();
 
@@ -64,6 +81,15 @@ class CollectionController extends Controller
         $request->validate([
             'custom_notes' => 'nullable|string',
         ]);
+
+        // Moderation check using the fallback-enabled AiManagerService
+        if ($request->filled('custom_notes')) {
+            if (!$this->aiService->checkTextModeration($request->custom_notes)) {
+                return response()->json([
+                    'message' => 'El texto ingresado contiene lenguaje inapropiado y viola las políticas de moderación.'
+                ], 422);
+            }
+        }
 
         $pokemon->update([
             'custom_notes' => $request->custom_notes,

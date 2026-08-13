@@ -122,13 +122,16 @@
                 "responses": {
                     "201": {
                         "description": "Guardado en la colección"
+                    },
+                    "422": {
+                        "description": "Error de validación o moderación. El texto enviado (custom_notes) contiene lenguaje inapropiado."
                     }
                 }
             }
         },
         "/ia/identify-pokemon": {
             "post": {
-                "summary": "Bonus IA: Identificar Pokémon desde imagen con Gemini Vision",
+                "summary": "Bonus IA: Identificar Pokémon desde imagen usando procesamiento cognitivo de IA",
                 "security": [
                     {
                         "bearerAuth": []
@@ -151,7 +154,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Retorna el nombre del Pokémon identificado, confianza y sugerencia"
+                        "description": "Retorna el nombre del Pokémon identificado, confianza y sugerencia generados por el motor de IA"
                     }
                 }
             }
