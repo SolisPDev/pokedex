@@ -1,5 +1,25 @@
-# Vue 3 + Vite
+# 💻 PokéDex Manager - Frontend Client (Vue 3 + Vite)
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Este es el cliente web Single Page Application (SPA) para **PokéDex Manager** desarrollado en Vue 3 con Tailwind CSS y Pinia.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## 🛠️ Requisitos e Instalación
+
+1. Asegúrate de tener instalado **Node.js (versión 18 o superior)**.
+2. Navega al directorio del cliente e instala las dependencias necesarias:
+   ```bash
+   npm install
+   ```
+
+## 🚀 Ejecución en Desarrollo
+
+Para iniciar el servidor de desarrollo local de Vite y visualizar la interfaz web:
+```bash
+npm run dev
+```
+
+De forma predeterminada, si el puerto `5173` está libre, estará disponible en `http://localhost:5173`. Si el puerto `5173` ya está ocupado por otro proceso, Vite levantará el cliente automáticamente en:
+**`http://localhost:5174`**
+
+## ⚙️ Conexión con la API Backend
+
+La configuración de Axios se enlaza automáticamente a la URL por defecto `http://localhost:8000/api/v1` para el desarrollo local. En producción, se lee de las variables de entorno inyectadas.

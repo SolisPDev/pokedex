@@ -3,7 +3,7 @@
 ## 1. Entorno de Ejecución (Local / Nativo)
 - **Base de Datos:** SQLite (`backend/database/database.sqlite`).
 - **Backend API:** Laravel 11 ejecutado localmente (ej: `php artisan serve`) en puerto `8000` (`http://localhost:8000/api`).
-- **Frontend SPA:** Vue 3 + Vite + Tailwind CSS ejecutado localmente (ej: `npm run dev`) en puerto `5173` (`http://localhost:5173`).
+- **Frontend SPA:** Vue 3 + Vite + Tailwind CSS ejecutado localmente (ej: `npm run dev`) en puerto `5174` (`http://localhost:5174`).
 
 ## 2. Diagrama de Relación de Datos (ERD)
 - **`users`**: `id`, `name`, `email`, `password`, `created_at`, `updated_at`.
@@ -83,4 +83,4 @@ Este servicio se compila de manera estática y requiere la URL pública del back
 
 | Variable | Valor Recomendado | Descripción |
 | :--- | :--- | :--- |
-| `VITE_API_URL` | `https://<dominio-backend-generado>.up.railway.app/api/v1` | Endpoint público del backend en producción |
+| `VITE_API_URL` | `https://<dominio-backend-generado>.up.railway.app/api/v1` | Endpoint público del backend en producción |
