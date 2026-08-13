@@ -4,7 +4,14 @@
 
 ---
 
+## 📖 Documentación Relacionada
+* 🧠 **[Funcionalidades Bonus de IA](file:///c:/proyectos/pokedex/BONUS_FEATURES.md)**: Detalle del funcionamiento, arquitectura híbrida de fallback y escaneo cognitivo.
+* ❓ **[Preguntas Frecuentes (FAQ)](file:///c:/proyectos/pokedex/PREGUNTAS_FRECUENTES.md)**: Dudas resueltas sobre autenticación, persistencia, uso de Pinia, compatibilidad de clientes y arquitectura.
+
+---
+
 ## 🚀 Características
+
 
 ### 1. Alcance Core (Obligatorio)
 - **Autenticación segura:** Registro e inicio de sesión integrados mediante Tokens (Laravel Sanctum).
@@ -17,6 +24,9 @@
 - **Diseño Premium:** Interfaz responsive, moderna, con fuentes estéticas y animaciones suaves utilizando Vue 3 y Tailwind CSS.
 
 ### 2. Funcionalidades de Inteligencia Artificial (Bonus)
+> [!NOTE]
+> Para más detalles sobre la arquitectura, flujos de datos y diseño técnico de las características de IA, consulta el archivo detallado de [Funcionalidades Bonus (IA)](file:///c:/proyectos/pokedex/BONUS_FEATURES.md).
+
 - **Reconocimiento de Pokémon por Imagen (LMM Visión):** 
   - Sube una imagen o captura de pantalla de un Pokémon.
   - La inteligencia artificial identifica al Pokémon con porcentaje de confianza y te sugiere cómo utilizarlo.
@@ -29,6 +39,7 @@
   - Toda la interfaz del usuario es **neutral**, devolviendo mensajes genéricos sin revelar qué proveedor de IA procesó la solicitud.
 
 ---
+
 
 ## 🛠️ Stack Tecnológico
 

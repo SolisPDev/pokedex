@@ -1,7 +1,22 @@
 @import "tailwindcss";
 
+/* 🎨 PALETA DE COLORES DE LA APLICACIÓN (Tailwind v4 Theme Overrides)
+   Modifica estos valores para cambiar la paleta de colores de toda la interfaz instantáneamente. */
+@theme {
+  /* Colores de fondo de la interfaz oscura (Zinc) */
+  --color-zinc-950: #09090b; /* Fondo principal de la SPA */
+  --color-zinc-900: #18181b; /* Barra lateral y tarjetas secundarias */
+  --color-zinc-800: #27272a; /* Bordes, separadores y botones */
+  --color-zinc-850: #202023; /* Bordes finos adicionales */
+
+  /* Color primario acentuado (Temática PokéDex - Rojo) */
+  --color-red-600: #dc2626; /* Color de realce principal */
+  --color-red-500: #ef4444; /* Color de realce secundario */
+}
+
 /* Premium Font from Google */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 
 :root {
   font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
