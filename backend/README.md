@@ -4,19 +4,8 @@ Este es el servidor API REST principal de **PokéDex Manager** desarrollado en L
 
 ## 🛠️ Requisitos e Instalación
 
-1. Asegúrate de tener instalado **PHP 8.2+** y **Composer**.
-2. Renombra el archivo `.env.configurado` como `.env`:
-   ```bash
-   mv .env.configurado .env
-   ```
-3. Instala las dependencias del proyecto:
-   ```bash
-   composer install
-   ```
-4. Inicializa la base de datos local SQLite:
-   ```bash
-   php artisan migrate
-   ```
+Para la instalación rápida, requisitos previos y puesta en marcha (incluyendo renombrar el archivo `.env.configurado` como `.env`), sigue los pasos unificados descritos en la sección **[Configuración e Instalación Rápida](../README.md#-configuración-e-instalación-rápida)** del README de la raíz.
+
 
 
 ## 🚀 Ejecución del Servidor

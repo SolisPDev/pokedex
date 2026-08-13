@@ -4,11 +4,8 @@ Este es el cliente web Single Page Application (SPA) para **PokéDex Manager** d
 
 ## 🛠️ Requisitos e Instalación
 
-1. Asegúrate de tener instalado **Node.js (versión 18 o superior)**.
-2. Navega al directorio del cliente e instala las dependencias necesarias:
-   ```bash
-   npm install
-   ```
+Para los requisitos previos, instalación de dependencias y puesta en marcha del frontend de la SPA, consulta los pasos detallados de la sección **[Configuración e Instalación Rápida](../README.md#-configuración-e-instalación-rápida)** del README de la raíz.
+
 
 ## 🚀 Ejecución en Desarrollo
 
