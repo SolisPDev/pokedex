@@ -4,12 +4,6 @@
 
 ---
 
-## 📖 Documentación Relacionada
-* 🧠 **[Funcionalidades Bonus de IA](file:///c:/proyectos/pokedex/BONUS_FEATURES.md)**: Detalle del funcionamiento, arquitectura híbrida de fallback y escaneo cognitivo.
-* ❓ **[Preguntas Frecuentes (FAQ)](file:///c:/proyectos/pokedex/PREGUNTAS_FRECUENTES.md)**: Dudas resueltas sobre autenticación, persistencia, uso de Pinia, compatibilidad de clientes y arquitectura.
-
----
-
 ## 🚀 Características
 
 
@@ -66,35 +60,29 @@ Sigue estos sencillos pasos para tener el proyecto corriendo localmente de forma
 
 ### 1. Levantar el Backend (Laravel 11)
 
-1. Entra a la carpeta `backend/` y duplica el archivo `.env.example` como `.env`:
+1. Abre tu terminal, entra a la carpeta `backend/` y renombra el archivo `.env.configurado` como `.env`:
    ```bash
    cd backend
-   cp .env.example .env
+   mv .env.configurado .env
    ```
-2. Instala las dependencias de PHP y genera la clave de la aplicación:
+2. Instala las dependencias de PHP:
    ```bash
    composer install
-   php artisan key:generate
    ```
-3. Configura tus claves de API correspondientes en el archivo `.env`:
-   ```env
-   # API Keys de Inteligencia Artificial (Configura al menos una para habilitar las funciones cognitivas)
-   OPENAI_API_KEY=tu_openai_api_key_aqui
-   GEMINI_API_KEY=tu_gemini_api_key_aqui
-   ```
-4. Ejecuta las migraciones para inicializar la base de datos SQLite:
+3. Ejecuta las migraciones para inicializar la base de datos SQLite:
    ```bash
    php artisan migrate
    ```
-5. Inicia el servidor de desarrollo:
+4. Inicia el servidor de desarrollo:
    ```bash
    php artisan serve
    ```
    El backend estará disponible en: **`http://localhost:8000`**
 
+
 ### 2. Levantar el Frontend (Vue 3)
 
-1. Abre una nueva terminal, entra a la carpeta `frontend/` e instala las dependencias de Node:
+1. Abre una nueva terminal e instala las dependencias de Node en la carpeta `frontend/`:
    ```bash
    cd frontend
    npm install
@@ -103,9 +91,10 @@ Sigue estos sencillos pasos para tener el proyecto corriendo localmente de forma
    ```bash
    npm run dev
    ```
-   El frontend estará disponible en: **`http://localhost:5174`** (o `:5173` si el puerto está libre).
+   El frontend estará disponible en: **`http://localhost:5173`**
 
 ---
+
 
 ## 📝 Resumen de Endpoints de la API
 
@@ -124,3 +113,10 @@ La aplicación expone los siguientes endpoints HTTP principales bajo el prefijo 
 | **DELETE** | `/collection/{id}` | Eliminar Pokémon de la colección | Sí |
 | **POST** | `/ia/identify-pokemon` | Escanear imagen para identificar Pokémon con fallback híbrido | Sí |
 | **POST** | `/ia/chat-insights` | Obtener recomendaciones del Profesor Pokémon con fallback híbrido | Sí |
+
+---
+
+## 📖 Documentación Relacionada
+* 🧠 **[Funcionalidades Bonus de IA](file:///c:/proyectos/pokedex/BONUS_FEATURES.md)**: Detalle del funcionamiento, arquitectura híbrida de fallback y escaneo cognitivo.
+* ❓ **[Preguntas Frecuentes (FAQ)](file:///c:/proyectos/pokedex/PREGUNTAS_FRECUENTES.md)**: Dudas resueltas sobre autenticación, persistencia, uso de Pinia, compatibilidad de clientes y arquitectura.
+

@@ -23,3 +23,22 @@ De forma predeterminada, si el puerto `5173` está libre, estará disponible en 
 ## ⚙️ Conexión con la API Backend
 
 La configuración de Axios se enlaza automáticamente a la URL por defecto `http://localhost:8000/api/v1` para el desarrollo local. En producción, se lee de las variables de entorno inyectadas.
+
+---
+
+## 🎨 Personalización de Colores (Tailwind CSS v4)
+
+Este proyecto hace uso de **Tailwind CSS v4** para el manejo de estilos. Puedes cambiar la paleta de colores de toda la interfaz de forma centralizada sin editar los componentes individuales:
+1. Abre el archivo [frontend/src/style.css](file:///c:/proyectos/pokedex/frontend/src/style.css).
+2. Edita los códigos de color hexadecimales bajo la directiva `@theme` (por ejemplo, `--color-zinc-950` para el fondo o `--color-red-600` para el realce de la PokéDex).
+
+---
+
+## 📦 Compilación para Producción
+
+Para compilar la aplicación optimizada para producción:
+```bash
+npm run build
+```
+Esto generará los archivos estáticos listos para desplegar en la carpeta `dist/`.
+
