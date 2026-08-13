@@ -77,7 +77,8 @@ import { useAuthStore } from './store/auth';
 import { 
   Search, 
   Sparkles, 
-  BookmarkCheck
+  BookmarkCheck,
+  Info
 } from 'lucide-vue-next';
 
 // Components
@@ -85,6 +86,7 @@ import LoginRegister from './components/LoginRegister.vue';
 import Pokedex from './components/Pokedex.vue';
 import Collection from './components/Collection.vue';
 import IaScanner from './components/IaScanner.vue';
+import About from './components/About.vue';
 
 const authStore = useAuthStore();
 const currentView = ref('pokedex');
@@ -93,6 +95,7 @@ const navItems = [
   { view: 'pokedex', label: 'Buscador PokéDex', icon: Search },
   { view: 'collection', label: 'Mi Colección', icon: BookmarkCheck },
   { view: 'scanner', label: 'Escáner & Asesor IA', icon: Sparkles },
+  { view: 'about', label: 'Acerca de', icon: Info },
 ];
 
 const activeComponent = computed(() => {
@@ -100,6 +103,7 @@ const activeComponent = computed(() => {
     case 'pokedex': return Pokedex;
     case 'collection': return Collection;
     case 'scanner': return IaScanner;
+    case 'about': return About;
     default: return Pokedex;
   }
 });

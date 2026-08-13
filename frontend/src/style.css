@@ -4,14 +4,20 @@
    Modifica estos valores para cambiar la paleta de colores de toda la interfaz instantáneamente. */
 @theme {
   /* Colores de fondo de la interfaz oscura (Zinc) */
-  --color-zinc-950: #09090b; /* Fondo principal de la SPA */
-  --color-zinc-900: #18181b; /* Barra lateral y tarjetas secundarias */
-  --color-zinc-800: #27272a; /* Bordes, separadores y botones */
-  --color-zinc-850: #202023; /* Bordes finos adicionales */
+  --color-zinc-950: #09090b;
+  /* Fondo principal de la SPA */
+  --color-zinc-900: #18181b;
+  /* Barra lateral y tarjetas secundarias */
+  --color-zinc-800: #27272a;
+  /* Bordes, separadores y botones */
+  --color-zinc-850: #202023;
+  /* Bordes finos adicionales */
 
   /* Color primario acentuado (Temática PokéDex - Rojo) */
-  --color-red-600: #dc2626; /* Color de realce principal */
-  --color-red-500: #ef4444; /* Color de realce secundario */
+  --color-red-600: #dc2626;
+  /* Color de realce principal */
+  --color-red-500: #ef4444;
+  /* Color de realce secundario */
 }
 
 /* Premium Font from Google */
@@ -30,30 +36,91 @@
 }
 
 /* Pokemon Type Colors / Gradients */
-.bg-type-normal { background-color: #A8A77A; }
-.bg-type-fire { background-color: #EE8130; }
-.bg-type-water { background-color: #6390F0; }
-.bg-type-electric { background-color: #F7D02C; }
-.bg-type-grass { background-color: #7AC74C; }
-.bg-type-ice { background-color: #96D9D6; }
-.bg-type-fighting { background-color: #C22E28; }
-.bg-type-poison { background-color: #A33EA1; }
-.bg-type-ground { background-color: #E2BF65; }
-.bg-type-flying { background-color: #A98FF3; }
-.bg-type-psychic { background-color: #F95587; }
-.bg-type-bug { background-color: #A6B91A; }
-.bg-type-rock { background-color: #B6A136; }
-.bg-type-ghost { background-color: #705746; }
-.bg-type-dragon { background-color: #6F35FC; }
-.bg-type-dark { background-color: #705746; }
-.bg-type-steel { background-color: #B7B7CE; }
-.bg-type-fairy { background-color: #D685AD; }
+.bg-type-normal {
+  background-color: #A8A77A;
+}
+
+.bg-type-fire {
+  background-color: #EE8130;
+}
+
+.bg-type-water {
+  background-color: #6390F0;
+}
+
+.bg-type-electric {
+  background-color: #F7D02C;
+}
+
+.bg-type-grass {
+  background-color: #7AC74C;
+}
+
+.bg-type-ice {
+  background-color: #96D9D6;
+}
+
+.bg-type-fighting {
+  background-color: #C22E28;
+}
+
+.bg-type-poison {
+  background-color: #A33EA1;
+}
+
+.bg-type-ground {
+  background-color: #E2BF65;
+}
+
+.bg-type-flying {
+  background-color: #A98FF3;
+}
+
+.bg-type-psychic {
+  background-color: #F95587;
+}
+
+.bg-type-bug {
+  background-color: #A6B91A;
+}
+
+.bg-type-rock {
+  background-color: #B6A136;
+}
+
+.bg-type-ghost {
+  background-color: #705746;
+}
+
+.bg-type-dragon {
+  background-color: #6F35FC;
+}
+
+.bg-type-dark {
+  background-color: #705746;
+}
+
+.bg-type-steel {
+  background-color: #B7B7CE;
+}
+
+.bg-type-fairy {
+  background-color: #D685AD;
+}
 
 /* Custom Animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .animate-float {

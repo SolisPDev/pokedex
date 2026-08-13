@@ -5,7 +5,16 @@
 - **Backend API:** Laravel 11 ejecutado localmente (ej: `php artisan serve`) en puerto `8000` (`http://localhost:8000/api`).
 - **Frontend SPA:** Vue 3 + Vite + Tailwind CSS ejecutado localmente (ej: `npm run dev`) en puerto `5174` (`http://localhost:5174`).
 
+### 1.1. Estructura de Vistas SPA (Componentes Dinámicos)
+La interfaz SPA mapea las siguientes vistas que se renderizan de forma reactiva en `App.vue`:
+* `LoginRegister.vue`: Control de acceso y registro de nuevos usuarios.
+* `Pokedex.vue`: Buscador y detalle de Pokémon.
+* `Collection.vue`: Listado personal de favoritos y edición de notas.
+* `IaScanner.vue`: Escaneo cognitivo de imágenes y chatbot del Profesor Pokémon.
+* `About.vue` [NUEVO]: Vista estática con información profesional del desarrollador y del proyecto.
+
 ## 2. Diagrama de Relación de Datos (ERD)
+
 - **`users`**: `id`, `name`, `email`, `password`, `created_at`, `updated_at`.
 - **`pokemon_collections`**: 
   - `id` (PK)

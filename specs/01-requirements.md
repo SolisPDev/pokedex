@@ -8,6 +8,9 @@
   - Asignar notas o comentarios personalizados a cada Pokémon guardado.
   - Eliminar Pokémon de su colección.
 - **Interfaz UI:** Diseño adaptativo (Responsive) y limpio desarrollado en Vue 3 con Tailwind CSS.
+- **Sección 'About' (Información del Desarrollador):**
+  - Una vista dedicada dentro de la navegación de la SPA para presentar la información profesional del desarrollador (Nombre, rol, enlaces a GitHub/LinkedIn y resumen del stack del proyecto).
+
 
 ## 2. Funcionalidades Bonus (Diferenciadores de IA)
 - **Bonus 1: Reconocimiento de Imagen / Visión con LMM:**
